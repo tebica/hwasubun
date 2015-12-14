@@ -1,0 +1,17 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+<h1>
+    <span class="label label-default">&nbsp; &nbsp; 검색결과 &nbsp; &nbsp; </span>
+</h1>
+    <ul class="list-group">
+            {%  for item in param %}
+            <li class="list-group-item"><a href="http://{{ SITE_NAME }}/detail/?key={{ item.objectId }}">{{ item.name }}</a></li>
+            {%  endfor %}
+          </ul>
+
+{% endblock %}

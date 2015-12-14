@@ -1,0 +1,33 @@
+{% extends "theme_bootstrap/base.html" %}
+
+{% load staticfiles %}
+{% load metron_tags %}
+{% load i18n %}
+
+
+{% block styles %}
+    {% include "_styles.html" %}
+
+    <link rel="shortcut icon" type="image/ico" href="{{STATIC_URL}}favicon.ico"/>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+{% endblock %}
+
+
+{% block extra_head_base %}
+    {% block extra_head %}{% endblock %}
+{% endblock %}
+
+
+{% block footer %}
+    {% include "_footer.html" %}
+{% endblock %}
+
+
+{% block scripts %}
+    {% include "_scripts.html" %}
+{% endblock %}
+
+{% block extra_body_base %}
+    {% analytics %}
+    {% block extra_body %}{% endblock %}
+{% endblock %}

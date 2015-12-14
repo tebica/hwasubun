@@ -1,0 +1,28 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+{% autoescape off %}
+    <base href="http://www.nongsaro.go.kr/">
+    <div style="width:600px">
+            {%  for item in param %}
+            {{ item.content }}
+            {%  endfor %}
+    </div>
+    <div style="width:600px">
+        <h2><span class="label label-success"> 이 식물 키우기</span></h2>
+        <form method="get" action="http://{{ SITE_NAME }}/save/">
+            <input type="hidden" name="plantid" value="{{ id }}">
+            <input type="hidden" name="plantname" value="{{ item.name }}">
+            <input type="hidden" name="plantpic" value="{{ item.pic }}">
+            <strong>화분 아이디</strong>: <input type="text" name="userid"><br/>
+            <strong>이름</strong>: <input type="text" name="username"><br/>
+            <button type="button" class="btn btn-warning" onclick="submit()">키우기</button>
+            </form>
+    </div>
+{% endautoescape %}
+
+{% endblock %}

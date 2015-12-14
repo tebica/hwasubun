@@ -1,0 +1,20 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+<h1>
+    <span class="label label-default">&nbsp; &nbsp; 저장완료 &nbsp; &nbsp; </span>
+</h1>
+    <script>
+
+        localStorage.setItem('plantid', '{{ param.plantid }}');
+        localStorage.setItem('plantname', '{{ param.plantname }}');
+        localStorage.setItem('plantpic', '{{ param.plantpic }}');
+        localStorage.setItem('username', '{{ param.username }}');
+        setTimeout(function(){document.location.href="/", 8000} );
+    </script>
+
+{% endblock %}
