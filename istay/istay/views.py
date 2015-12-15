@@ -16,7 +16,9 @@ class ListPlantView(TemplateView):
     template_name = "list.html"
     def get(self, request):
         _key = request.GET.get('key')
-        result = nongsaro.Query.filter(name__regex=_key)
+        _key = _key.encode('utf-8')
+#        result = nongsaro.Query.filter(name__regex=_key)
+        result = nongsaro.Query.filter(name=_key)
 
         return render(request, self.template_name, {'param' : result})
 
@@ -25,6 +27,7 @@ class DetailPlantView(TemplateView):
     template_name = "detail.html"
     def get(self, request):
         _key = request.GET.get('key')
+        _key = _key.encode('utf-8')
         result = nongsaro.Query.filter(objectId=_key)
 
         return render(request, self.template_name, {'param' : result,
