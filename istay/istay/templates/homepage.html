@@ -12,11 +12,10 @@
         <div class="container">
             {% include "_messages.html" %}
             <h2>화수분에 오신것을 환영합니다</h2>
-           <p>
-                아래 검색창에서 원하시는 식물을 검색해 주세요 ⬇
-            </p>
+
 
         <span id="msg"></span>
+        <a href='#' onclick='reset_storage()'>reset</a>
         <!--
             {% if not user.is_authenticated %}
             {% url "account_login" as login_url %}
@@ -61,7 +60,7 @@
             msg = "<span class='btn btn-default'>"+username+"</span>님은 현재 <span class='btn btn-primary'>"+ pname + "</span>를  키우고 계시고 있습니다<br/>" +
                     "<img src="+ppic+" width=300><br/>" +
                     "<h2><span class='btn label-danger'><a href='/user/?userid="+ userid +"'> 내 화분 정보 보기</a></span></h2> " +
-                    "<span class='btn btn-default'> 1 일째</span> " +
+                    "<span class='btn btn-default'>키운지 1 일째</span> " +
                     "현재 화분의 <span class='btn btn-default'>온도는 20도</span> <span class='btn btn-default'>습도는 60%</span>입니다<br/>" +
                     "최근에 물주기 한 시각은 <span class='btn btn-default'>12월 16일</span> 입니다<br/><br/>" +
                     "<a href='#' onclick='reset_storage()'>reset</a> / " +
@@ -71,7 +70,8 @@
             $('#search_c').html('')
         }
         else{
-            msg = "현재 키우고 계신 식물이 없습니다.";
+            msg = "현재 키우고 계신 식물이 없습니다.<br/>" +
+                    "아래 검색창에서 원하시는 식물을 검색해 주세요 ⬇";
         }
             $('#msg').html(msg);
         /*localStorage.setItem('id', 'ilE5Dd5Pbe');
