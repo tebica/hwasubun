@@ -52,15 +52,19 @@
     </section>
     <script>
         pid = localStorage.getItem('plantid');
-        pname = localStorage.getItem('pname');
+        pname = localStorage.getItem('plantname');
+        ppic = localStorage.getItem('plantpic');
+        userid = localStorage.getItem('userid');
         username = localStorage.getItem('username');
         if(pid){
 
             msg = "<span class='btn btn-default'>"+username+"</span>님은 현재 <span class='btn btn-primary'>"+ pname + "</span>를  <span class='btn btn-default'> 3 일째</span> 키우고 계시고 있습니다<br/>" +
                     "현재 화분의 <span class='btn btn-default'>온도는 20도</span> <span class='btn btn-default'>습도는 60%</span>입니다<br/>" +
                     "최근에 물주기 한 시각은 <span class='btn btn-default'>12월 8일</span> 입니다<br/><br/>" +
-                    "  <div class='progress'>현재 물통에 물이 40% 남았습니다"+
-        '<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div></div>';
+                    "<a href='#' onclick='reset_storage()'>reset</a> / " +
+                            "<a href='#' onclick='set_demodata()'>set demo</a>" +
+                    "<!--div class='progress'>현재 물통에 물이 40% 남았습니다"+
+        '<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div></div-->';
             $('#search_c').html('')
         }
         else{
@@ -68,8 +72,25 @@
         }
             $('#msg').html(msg);
         /*localStorage.setItem('id', 'ilE5Dd5Pbe');
-        localStorage.setItem('uname', '박민우');*/
+        localStorage.setItem('uname', '박민우');
         localStorage.setItem('pname', '산세베리아');
 
+        setTimeout("alert('HHHH ALERT')",2000 );*/
+        function reset_storage(){
+            alert("deleteing local")
+            localStorage.setItem('plantid', '');
+            localStorage.setItem('plantpic', '');
+            localStorage.setItem('username', '');
+            localStorage.setItem('userid', '');
+            localStorage.setItem('plantname', '');
+        }
+    function set_demodata(){
+            alert("set demo")
+            localStorage.setItem('plantid', '');
+            localStorage.setItem('plantpic', '');
+            localStorage.setItem('username', '임순일');
+            localStorage.setItem('userid', '임순일');
+            localStorage.setItem('plantname', '로즈마리');
+        }
     </script>
 {% endblock %}

@@ -23,6 +23,15 @@ class ListPlantView(TemplateView):
         return render(request, self.template_name, {'param' : result})
 
 
+class UserView(TemplateView):
+    template_name = "user.html"
+    def get(self, request):
+        _key = request.GET.get('key')
+        result = nongsaro.Query.filter(objectId=_key)
+
+        return render(request, self.template_name, {'param' : result,
+                                                    'id':_key})
+
 class DetailPlantView(TemplateView):
     template_name = "detail.html"
     def get(self, request):
