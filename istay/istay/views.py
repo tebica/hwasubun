@@ -43,9 +43,8 @@ class UserView(TemplateView):
         events = e.limit(3)
         h = History.Query.filter(PlantID=userid).order_by("-createdAt")
         history = h.limit(1)
-        for tt in events:
-            aflag = events[0].EmptyWarning
-            aid = events[0].objectId
+        aflag = events[0].EmptyWarning
+        aid = events[0].objectId
         print repr(history[0].createdAt)
 
         return render(request, self.template_name, {'result' : result[0],
