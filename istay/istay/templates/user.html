@@ -13,7 +13,7 @@
 
     {% if aflag == True %}
     <div class="alert alert-danger" role="alert">
-        <strong>경고!</strong> 물이 부족합니다 - {{ aid }}
+        <strong>경고!</strong> 물이 부족합니다
       </div>
     {% else %}
     <div class="alert alert-info" role="alert">
@@ -21,10 +21,13 @@
       </div>
     {% endif %}
 
-    화분 고유번호 : <span class='btn btn-default'>{{ aid }}</span>  <br/>
+    uid : {{ aid }}  <br/>
                     오늘로 <span class='btn btn-default'>키운지 2 일째 </span> <br/>
-                    현재 화분의 <span class='btn btn-default'>온도 : {{ history.Temperature }} </span>  <br/>
-                    현재 화분의 <span class='btn btn-default'>습도 : {{ history.Humidity }}</span><br/>
+                    현재 화분의 <span class='btn btn-default'>온도 : {{ history.Temperature }}도 </span>  <br/>
+                    현재 화분의 <span class='btn btn-default'>습도 : {{ history.Humidity }}%</span><br/>
+    현재 화분의 <span class='btn btn-default'>조도 : {{ history.Light }} LUX</span><br/>
+    현재 화분의 <span class='btn btn-default'>토양수분 : {{ history.Moisture }}%</span><br/>
+    현재 화분의 <span class='btn btn-default'>물통 수위 : {{ history.WaterLevel }}%</span><br/>
                     <br/><strong>최근 물주기 기록</strong><br/>
     {% for item in events %}
 
@@ -46,6 +49,11 @@
 
    <br/> <strong><a href="http://{{ SITE_NAME }}">첫 화면으로 가기</a></strong>
     </div>
+                <style>
+                img {width:300px;}
+                .bx img {width:50px;}
+                </style>
+{{ result.content }}
     <script type="text/javascript">
     setTimeout(function () {
       location.reload();

@@ -35,15 +35,21 @@ class UserView(TemplateView):
         userid = request.GET.get('userid')
         history = {}
         events = {}
+        _key = request.GET.get('key')
+        _key = _key.encode('utf-8')
+        result = nongsaro.Query.filter(objectId=_key)
+
         e = EventHistory.Query.all().order_by("-createdAt")
         events = e.limit(3)
         h = History.Query.filter(PlantID=userid).order_by("-createdAt")
         history = h.limit(1)
-        aflag = events[0].EmptyWarning
-        aid = events[0].objectId
+        for tt in events:
+            aflag = events[0].EmptyWarning
+            aid = events[0].objectId
         print repr(history[0].createdAt)
 
-        return render(request, self.template_name, {'history' : history[0],
+        return render(request, self.template_name, {'result' : result[0],
+                                                    'history' : history[0],
                                                     'events' : events,
                                                     'userid' : userid,
                                                     'aflag' : aflag,
