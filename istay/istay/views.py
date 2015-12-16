@@ -36,15 +36,18 @@ class UserView(TemplateView):
         history = {}
         events = {}
         e = EventHistory.Query.all().order_by("-createdAt")
-        events = e.limit(1)
-        if(userid == "B4218AF00821"):
-            print "a"
-        else:
-            print "b"
+        events = e.limit(3)
+        h = History.Query.filter(PlantID=userid).order_by("-createdAt")
+        history = h.limit(1)
+        aflag = events[0].EmptyWarning
+        aid = events[0].objectId
+        print repr(history[0].createdAt)
 
-        return render(request, self.template_name, {'history' : history,
+        return render(request, self.template_name, {'history' : history[0],
                                                     'events' : events,
-                                                    'userid' : userid})
+                                                    'userid' : userid,
+                                                    'aflag' : aflag,
+                                                    'aid':aid})
 
 class DetailPlantView(TemplateView):
     template_name = "detail.html"
