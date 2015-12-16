@@ -1,6 +1,6 @@
 {% extends "site_base.html" %}
 
-{% block head_title %}pinax-project-account{% endblock %}
+{% block head_title %}hwasubun{% endblock %}
 
 {% block body_class %}home{% endblock %}
 
@@ -8,27 +8,27 @@
 {% autoescape off %}
     <base href="http://www.nongsaro.go.kr/">
     <div style="width:600px">
-            {%  for item in param %}
-            {{ item.content }}
 
-    </div>
-    <div style="width:600px">
-        <h2><span class="label label-success"> 이 식물 키우기</span></h2>
-        <table><tr>
-        <form method="get" action="http://{{ SITE_NAME }}/save/">
-            <input type="hidden" name="plantid" value="{{ id }}">
-            <input type="hidden" name="plantname" value="{{ item.name }}">
-            <input type="hidden" name="plantpic" value="{{ item.pic }}">
-            <td><strong>화분 아이디:</strong></td> <td><input type="text" name="userid"><br/></td>
-            </tr><tr>
-            <td><strong>이름:</strong></td> <td><input type="text" name="username"><br/></td>
-            <tr><td colspan="2" align="right">
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button type="button" class="btn btn-warning" onclick="submit()">키우기</button>
-        </td></tr>
+{% if userid == "B4218AF00821" %}
+                    오늘로 <span class='btn btn-default'>키운지 2 일째</span> <br/>
+                    현재 화분의 <span class='btn btn-default'>온도 : 24</span>  <br/>
+                    현재 화분의 <span class='btn btn-default'>습도 : 32</span><br/>
+                    <br/><strong>최근 물주기 기록</strong><br/>
+    2015-12-16T14:41:08.461Z<br/>
+    2015-12-16T14:41:26.221Z
+    <br/>
+                    <!--div class='progress'>현재 물통에 물이 40% 남았습니다
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div></div-->
+{% else %}
+                    <span class='btn btn-default'>키운지 1 일째</span>입니다 <br/>
+                    현재 화분의 <span class='btn btn-default'>온도 정보가 아직 없습니다</span>  <br/>
+                    현재 화분의 <span class='btn btn-default'>습도 정보가 아직 없습니다</span><br/>
+                    최근에 물주기 한 기록이 없습니다<br/><br/>
+                    <!--div class='progress'>현재 물통에 물이 40% 남았습니다
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div></div-->
+{% endif %}
 
-            </form>
-        </tr></table>
-    {%  endfor %}
+   <br/> <strong><a href="http://{{ SITE_NAME }}">첫 화면으로 가기</a></strong>
     </div>
 {% endautoescape %}
 

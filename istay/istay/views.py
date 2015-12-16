@@ -12,6 +12,12 @@ class nongsaro(Object):
 class Usert(Object):
     pass
 
+class History(Object):
+    pass
+
+class EventHistory(Object):
+    pass
+
 class ListPlantView(TemplateView):
     template_name = "list.html"
     def get(self, request):
@@ -26,11 +32,18 @@ class ListPlantView(TemplateView):
 class UserView(TemplateView):
     template_name = "user.html"
     def get(self, request):
-        _key = request.GET.get('key')
-        result = nongsaro.Query.filter(objectId=_key)
+        userid = request.GET.get('userid')
+        history = {}
+        events = {}
+#        result = History.Query.filter(objectId=_key)
+        if(userid == "B4218AF00821"):
+            print "a"
+        else:
+            print "b"
 
-        return render(request, self.template_name, {'param' : result,
-                                                    'id':_key})
+        return render(request, self.template_name, {'history' : history,
+                                                    'events' : events,
+                                                    'userid' : userid})
 
 class DetailPlantView(TemplateView):
     template_name = "detail.html"
