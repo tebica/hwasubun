@@ -35,7 +35,8 @@ class UserView(TemplateView):
         userid = request.GET.get('userid')
         history = {}
         events = {}
-#        result = History.Query.filter(objectId=_key)
+        e = EventHistory.Query.all().order_by("-createdAt")
+        events = e.limit(1)
         if(userid == "B4218AF00821"):
             print "a"
         else:
