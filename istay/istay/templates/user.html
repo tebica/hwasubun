@@ -22,12 +22,14 @@
     {% endif %}
 
     uid : {{ aid }}  <br/>
+    {% for item in history %}
                     오늘로 <span class='btn btn-default'>키운지 2 일째 </span> <br/>
-                    현재 화분의 <span class='btn btn-default'>온도 : {{ history.Temperature }}도 </span>  <br/>
-                    현재 화분의 <span class='btn btn-default'>습도 : {{ history.Humidity }}%</span><br/>
-    현재 화분의 <span class='btn btn-default'>조도 : {{ history.Light }} LUX</span><br/>
-    현재 화분의 <span class='btn btn-default'>토양수분 : {{ history.Moisture }}%</span><br/>
-    현재 화분의 <span class='btn btn-default'>물통 수위 : {{ history.WaterLevel }}%</span><br/>
+                    현재 화분의 <span class='btn btn-default'>온도 : {{ item.Temperature }}도 </span>  <br/>
+                    현재 화분의 <span class='btn btn-default'>습도 : {{ item.Humidity }}%</span><br/>
+    현재 화분의 <span class='btn btn-default'>조도 : {{ item.Light }} LUX</span><br/>
+    현재 화분의 <span class='btn btn-default'>토양수분 : {{ item.Moisture }}%</span><br/>
+    현재 화분의 <span class='btn btn-default'>물통 수위 : {{ item.WaterLevel }}%</span><br/>
+    {% endfor %}
                     <br/><strong>최근 물주기 기록</strong><br/>
     {% for item in events %}
 
@@ -53,7 +55,9 @@
                 img {width:300px;}
                 .bx img {width:50px;}
                 </style>
-{{ result.content }}
+{% for item in result %}
+{{ item.content }}
+{% endfor %}
     <script type="text/javascript">
     setTimeout(function () {
       location.reload();
